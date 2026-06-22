@@ -2,7 +2,12 @@
   "name": "playwright-automation",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
