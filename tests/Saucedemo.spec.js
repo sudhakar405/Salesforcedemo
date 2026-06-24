@@ -156,7 +156,7 @@ const inventory=new InventoryPage(page)
 const cart=new CartPage(page)
 const checkout=new CheckoutPage(page)
 await login.goto()
-await login.login('Standard_user','secret_sauce')
+await login.login('standard_user','secret_sauce')
 await inventory.addBackPack()
 await inventory.openCart()
 await cart.checkout()
@@ -171,7 +171,7 @@ const inventory=new InventoryPage(page)
 const cart=new CartPage(page)
 const checkout=new CheckoutPage(page)
 await login.goto()
-await login.login('Standard_user','secret_sauce')
+await login.login('standard_user','secret_sauce')
 await inventory.addBackPack()
 await inventory.openCart()
 await cart.checkout()
@@ -186,7 +186,7 @@ const inventory=new InventoryPage(page)
 const cart=new CartPage(page)
 const checkout=new CheckoutPage(page)
 await login.goto()
-await login.login('Standard_user','secret_sauce')
+await login.login('standard_user','secret_sauce')
 await inventory.addBackPack()
 await inventory.openCart()
 await cart.checkout()
@@ -199,12 +199,14 @@ const login=new LoginPage(page)
 await login.goto()
 await login.login('standard_user','secret_sauce')
 
-const addButton=page.locator('button:has-text("Add to cart")')
+let addButton=page.locator('button:has-text("Add to cart")')
+await addButton.first().waitFor({ state: 'visible' })
 
-const count= await addButton.count()
-
-for(let i=0;i<count;i++){
-await addButton.nth(i).click()
+let count = await addButton.count()
+while(count > 0){
+await addButton.first().click()
+await page.waitForTimeout(200)
+count = await addButton.count()
 }
 
 })
@@ -214,20 +216,24 @@ const login=new LoginPage(page)
 await login.goto()
 await login.login('standard_user','secret_sauce')
 
-const addButton=page.locator('button:has-text("Add to cart")')
+let addButton=page.locator('button:has-text("Add to cart")')
+await addButton.first().waitFor({ state: 'visible' })
 
-const count= await addButton.count()
-
-for(let i=0;i<count;i++){
-await addButton.nth(i).click()
+let count = await addButton.count()
+while(count > 0){
+await addButton.first().click()
+await page.waitForTimeout(200)
+count = await addButton.count()
 }
 
-const removeButton=page.locator('button:has-text("Remove")')
+let removeButton=page.locator('button:has-text("Remove")')
+await removeButton.first().waitFor({ state: 'visible' })
 
-const removeCount= await removeButton.count()
-
-for(let i=0;i<removeCount;i++){
-await removeButton.nth(i).click()
+let removeCount = await removeButton.count()
+while(removeCount > 0){
+await removeButton.first().click()
+await page.waitForTimeout(200)
+removeCount = await removeButton.count()
 }
 
 })
@@ -239,7 +245,7 @@ await login.goto()
 const inventory=new InventoryPage(page)
 const cart=new CartPage(page)
 const checkout=new CheckoutPage(page)
-await login.login('Standard_user','secret_sauce')
+await login.login('standard_user','secret_sauce')
 await inventory.addBackPack()
 await inventory.openCart()
 await cart.checkout()

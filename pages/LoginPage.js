@@ -16,5 +16,6 @@ async login(username,password){
 await this.usernameInput.fill(username)
 await this.passwordInput.fill(password)
 await this.loginBtn.click()
+await this.page.waitForLoadState('networkidle')
 }
 }

@@ -12,13 +12,16 @@ export class CheckoutPage{
 }
 
    async fillCheckout(fname,lname,zipcode){
+    await this.firstName.waitFor({ state: 'visible' })
     await this.firstName.fill(fname)
     await this.lastName.fill(lname)
     await this.zip.fill(zipcode)
+    await this.continueBtn.waitFor({ state: 'visible' })
     await this.continueBtn.click()
 }
 
    async finish(){
+     await this.finishBtn.waitFor({ state: 'visible' })
      await this.finishBtn.click()
 }
 }

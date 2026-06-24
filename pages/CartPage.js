@@ -7,10 +7,12 @@ export class CartPage{
 }
 
   async checkout(){
+  await this.checkoutbtn.waitFor({ state: 'visible' })
   await this.checkoutbtn.click()
 }
 
 async continueShoppingClick(){
+  await this.continueshopping.waitFor({ state: 'visible' })
   await this.continueshopping.click()
 }
 }

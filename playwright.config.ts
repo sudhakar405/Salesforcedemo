@@ -1,3 +1,4 @@
+/// <reference types="node" />
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
